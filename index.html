@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,30 +10,50 @@
         body {
             font-family: 'montserrat';
             display: flex;
+
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             overflow: hidden;
             margin: 0;
+            background: linear-gradient(135deg, #00c8ff, #ffb74d)
         }
 
         form select {
             height: 2rem;
             width: 10rem;
             margin: 1rem;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            background-color: #fff;
             cursor: pointer;
             border: 1px solid;
             border-radius: 50px;
-            border: none;
+
         }
-        
+
+        .heading {
+            position: absolute;
+            top: 30px;
+            overflow: hidden;
+            /* Hide overflowing text */
+            border-right: 0.15em solid orange;
+            /* Simulate typing cursor */
+            white-space: nowrap;
+            font-size: 5rem;
+            animation: typing 3s steps(20, end), blink-caret 0.75s infinite;
+        }
+
         form button {
             height: 2rem;
             width: 10rem;
             cursor: pointer;
             border: 1px solid;
-            
+
             background-color: black;
             color: #fff;
             border-radius: 50px;
@@ -41,16 +61,97 @@
 
         form label {
             text-decoration: underline;
-            color: gray;
+            font-size: 26px;
+            color: black;
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .weather-info .location {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .weather-info .temperature {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .selection-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+        }
+
+        .selection-menu select {
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+
+
+        .foot {
+            position: relative;
+            top: 40%;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 50%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+                /* Blink effect */
+            }
+
+            50% {
+                border-color: orange;
+                /* Blink effect */
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Know Your Weather</h1>
-    <h2>
+    <h1 class="heading">Know Your Weather</h1>
+
+    <div class="weather-info animated">
         <form action="/" method="post">
             <label for="cityInput">Choose your city name:</label>
+
             <select name="cityName" id="cityInput">
 
                 <option value="ahmedabad">ahmedabad</option>
@@ -65,10 +166,13 @@
                 <option value="london">london</option>
                 <option value="mecca">mecca</option>
             </select>
-            <button type="submit">Go</button>
 
-        </form>
-    </h2>
+            <button type="submit">Check</button>
+    </div>
+    </form>
+    </div>
+
+    <footer class="foot">Copyright 2023 @ rahil saiyed</footer>
 </body>
 
 </html>
